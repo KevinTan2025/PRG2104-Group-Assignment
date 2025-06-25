@@ -2,13 +2,13 @@ import com.github.tototoshi.csv._
 import java.io.File
 
 object DataLoader {
-  def loadData(filePath: String): Seq[HospRecord] = {
+  def loadData(filePath: String): Seq[GdpRecord] = {
     val reader = CSVReader.open(new File(filePath))
     val data = reader.allWithHeaders()
     reader.close()
 
     data.map(row =>
-      HospRecord(
+      GdpRecord(
         row("year"),
         row("country_code"),
         row("country_name"),

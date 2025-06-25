@@ -1,4 +1,4 @@
-trait HospData {
+trait GdpData {
   def year: String
   def country_code: String
   def country_name: String
@@ -48,7 +48,7 @@ trait HospData {
   def global_development_resilience_index: String
 }
 
-case class HospRecord(
+case class GdpRecord(
   year: String,
   country_code: String,
   country_name: String,
@@ -96,4 +96,4 @@ case class HospRecord(
   governance_quality_index: String,
   global_resilience_score: String,
   global_development_resilience_index: String
-) extends HospData
+) extends GdpData
