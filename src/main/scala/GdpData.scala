@@ -6,7 +6,7 @@ trait GdpData {
   def income_group: String
   def currency_unit: String
   def gdp_usd: Double
-  def population: Int
+  def population: Double
   def gdp_per_capita: Double
   def inflation_rate: Double
   def unemployment_rate: Double
@@ -56,7 +56,7 @@ case class GdpRecord(
   income_group: String,
   currency_unit: String,
   gdp_usd: Double,
-  population: Int,
+  population: Double,
   gdp_per_capita: Double,
   inflation_rate: Double,
   unemployment_rate: Double,

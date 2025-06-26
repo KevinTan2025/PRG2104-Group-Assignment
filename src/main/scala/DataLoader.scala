@@ -2,6 +2,11 @@ import com.github.tototoshi.csv._
 import java.io.File
 
 object DataLoader {
+  private def safeToDouble(s: String): Double =
+    if (s == null || s.trim.isEmpty) 0.0 else s.toDouble
+  private def safeToInt(s: String): Int =
+    if (s == null || s.trim.isEmpty) 0 else s.toInt
+
   def loadData(filePath: String): Seq[GdpRecord] = {
     val reader = CSVReader.open(new File(filePath))
     val data = reader.allWithHeaders()
@@ -9,53 +14,53 @@ object DataLoader {
 
     data.map(row =>
       GdpRecord(
-        row("year"),
+        safeToInt(row("year")),
         row("country_code"),
         row("country_name"),
         row("region"),
         row("income_group"),
         row("currency_unit"),
-        row("gdp_usd"),
-        row("population"),
-        row("gdp_per_capita"),
-        row("inflation_rate"),
-        row("unemployment_rate"),
-        row("fdi_pct_gdp"),
-        row("co2_emissions_kt"),
-        row("energy_use_per_capita"),
-        row("renewable_energy_pct"),
-        row("forest_area_pct"),
-        row("electricity_access_pct"),
-        row("life_expectancy"),
-        row("child_mortality"),
-        row("school_enrollment_secondary"),
-        row("health_expenditure_pct_gdp"),
-        row("hospital_beds_per_1000"),
-        row("physicians_per_1000"),
-        row("internet_usage_pct"),
-        row("mobile_subscriptions_per_100"),
-        row("calculated_gdp_per_capita"),
-        row("real_economic_growth_indicator"),
-        row("econ_opportunity_index"),
-        row("co2_emissions_per_capita_tons"),
-        row("co2_intensity_per_million_gdp"),
-        row("green_transition_score"),
-        row("ecological_preservation_index"),
-        row("renewable_energy_efficiency"),
-        row("human_development_composite"),
-        row("healthcare_capacity_index"),
-        row("digital_connectivity_index"),
-        row("health_development_ratio"),
-        row("education_health_ratio"),
-        row("years_since_2000"),
-        row("years_since_century"),
-        row("is_pandemic_period"),
-        row("human_development_index"),
-        row("climate_vulnerability_index"),
-        row("digital_readiness_score"),
-        row("governance_quality_index"),
-        row("global_resilience_score"),
-        row("global_development_resilience_index")
+        safeToDouble(row("gdp_usd")),
+        safeToDouble(row("population")),
+        safeToDouble(row("gdp_per_capita")),
+        safeToDouble(row("inflation_rate")),
+        safeToDouble(row("unemployment_rate")),
+        safeToDouble(row("fdi_pct_gdp")),
+        safeToDouble(row("co2_emissions_kt")),
+        safeToDouble(row("energy_use_per_capita")),
+        safeToDouble(row("renewable_energy_pct")),
+        safeToDouble(row("forest_area_pct")),
+        safeToDouble(row("electricity_access_pct")),
+        safeToDouble(row("life_expectancy")),
+        safeToDouble(row("child_mortality")),
+        safeToDouble(row("school_enrollment_secondary")),
+        safeToDouble(row("health_expenditure_pct_gdp")),
+        safeToDouble(row("hospital_beds_per_1000")),
+        safeToDouble(row("physicians_per_1000")),
+        safeToDouble(row("internet_usage_pct")),
+        safeToDouble(row("mobile_subscriptions_per_100")),
+        safeToDouble(row("calculated_gdp_per_capita")),
+        safeToDouble(row("real_economic_growth_indicator")),
+        safeToDouble(row("econ_opportunity_index")),
+        safeToDouble(row("co2_emissions_per_capita_tons")),
+        safeToDouble(row("co2_intensity_per_million_gdp")),
+        safeToDouble(row("green_transition_score")),
+        safeToDouble(row("ecological_preservation_index")),
+        safeToDouble(row("renewable_energy_efficiency")),
+        safeToDouble(row("human_development_composite")),
+        safeToDouble(row("healthcare_capacity_index")),
+        safeToDouble(row("digital_connectivity_index")),
+        safeToDouble(row("health_development_ratio")),
+        safeToDouble(row("education_health_ratio")),
+        safeToInt(row("years_since_2000")),
+        safeToInt(row("years_since_century")),
+        safeToInt(row("is_pandemic_period")),
+        safeToDouble(row("human_development_index")),
+        safeToDouble(row("climate_vulnerability_index")),
+        safeToDouble(row("digital_readiness_score")),
+        safeToDouble(row("governance_quality_index")),
+        safeToDouble(row("global_resilience_score")),
+        safeToDouble(row("global_development_resilience_index"))
       )
     )
   }
