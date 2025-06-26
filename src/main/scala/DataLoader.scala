@@ -6,6 +6,9 @@ object DataLoader {
     if (s == null || s.trim.isEmpty) 0.0 else s.toDouble
   private def safeToInt(s: String): Int =
     if (s == null || s.trim.isEmpty) 0 else s.toInt
+  //use safeToOptionDouble for relevant fields in loadData  
+  private def safeToOptionDouble(s: String): Option[Double] =
+    if (s == null || s.trim.isEmpty) None else Some(s.toDouble)  
 
   def loadData(filePath: String): Seq[GdpRecord] = {
     val reader = CSVReader.open(new File(filePath))
@@ -31,9 +34,9 @@ object DataLoader {
         safeToDouble(row("renewable_energy_pct")),
         safeToDouble(row("forest_area_pct")),
         safeToDouble(row("electricity_access_pct")),
-        safeToDouble(row("life_expectancy")),
-        safeToDouble(row("child_mortality")),
-        safeToDouble(row("school_enrollment_secondary")),
+        safeToOptionDouble(row("life_expectancy")),
+        safeToOptionDouble(row("child_mortality")),
+        safeToOptionDouble(row("school_enrollment_secondary")),
         safeToDouble(row("health_expenditure_pct_gdp")),
         safeToDouble(row("hospital_beds_per_1000")),
         safeToDouble(row("physicians_per_1000")),
@@ -48,9 +51,9 @@ object DataLoader {
         safeToDouble(row("ecological_preservation_index")),
         safeToDouble(row("renewable_energy_efficiency")),
         safeToDouble(row("human_development_composite")),
-        safeToDouble(row("healthcare_capacity_index")),
+        safeToOptionDouble(row("healthcare_capacity_index")),
         safeToDouble(row("digital_connectivity_index")),
-        safeToDouble(row("health_development_ratio")),
+        safeToOptionDouble(row("health_development_ratio")),
         safeToDouble(row("education_health_ratio")),
         safeToInt(row("years_since_2000")),
         safeToInt(row("years_since_century")),
