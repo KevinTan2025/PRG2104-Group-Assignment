@@ -41,7 +41,7 @@ class Analysis(val records: Seq[GdpData]) {
 
   //Question 3
   //Find the country that lost the most forest area from 2000 to 2020
-  def highestForestLossCountry: Option[String] = {
+  def highestForestLossCountry: Option[(String, Double)] = {
     //Group records by country
     val group: Map[String, Double] = records.groupBy(_.country_name).flatMap{case (country, recs) =>
       //Create a map of year
@@ -58,6 +58,6 @@ class Analysis(val records: Seq[GdpData]) {
     }
     
     //Find the country with the highest loss
-    if (group.isEmpty) None else Some(group.maxBy(_._2)._1)
+    if (group.isEmpty) None else Some(group.maxBy(_._2))
   }
 }
