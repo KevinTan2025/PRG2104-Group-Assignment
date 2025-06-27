@@ -38,4 +38,26 @@ class Analysis(val records: Seq[GdpData]) {
     //return the country with the highest score
     group.maxByOption(_._2).map(_._1)
   }
+
+  //Question 3
+  //Find the country that lost the most forest area from 2000 to 2020
+  def highestForestLossCountry: Option[String] = {
+    //Group records by country
+    val group: Map[String, Double] = records.groupBy(_.country_name).flatMap{case (country, recs) =>
+      //Create a map of year
+      val forestByYear: Map[Int, Double] = recs
+        .filter(_.forest_area_pct.isDefined)
+        .map(r => r.year -> r.forest_area_pct.get) //keep only records with defined forest area percentage
+        .toMap
+      
+      //Get forest area for 2000 and 2020, calculate the difference(loss)
+      for {
+        start <- forestByYear.get(2000)
+        end <- forestByYear.get(2020)
+      } yield country -> (start - end)
+    }
+    
+    //Find the country with the highest loss
+    if (group.isEmpty) None else Some(group.maxBy(_._2)._1)
+  }
 }

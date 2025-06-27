@@ -3,10 +3,12 @@ object MainApp extends App {
   // Print the loaded data
   //data.foreach(println)
 
-  // Step 2: Create the Analysis object
+  //code for test running the analysis, should be modified later
+
+  //Create the Analysis object
   val analysis = new Analysis(data)
 
-  // Step 3: Question 1 - Highest Life Expectancy
+  //Question 1 - Highest Life Expectancy
   analysis.highestLifeExpectancy match {
     case Some(country_name, year) =>
       println(s"1. Highest Life Expectancy: $country_name ($year)")
@@ -14,11 +16,19 @@ object MainApp extends App {
       println("1. No data found for life expectancy.")
   }
 
-  // Step 4: Question 2 - Best Health & Education Performer
+  //Question 2 - Best Health & Education Performer
   analysis.bestHealthEducationCountry match {
     case Some(country) =>
       println(s"2. Best Health & Education Performer: $country")
     case None =>
       println("2. No data found for health and education indicators.")
+  }
+
+  // Question 3: Highest forest area loss
+  analysis.highestForestLossCountry match {
+    case Some(country) =>
+      println(s"3️. Highest Forest Area Loss: $country")
+    case None =>
+      println("3. Not enough forest area data available.")
   }
 }

@@ -14,7 +14,7 @@ trait GdpData {
   def co2_emissions_kt: Double
   def energy_use_per_capita: Double
   def renewable_energy_pct: Double
-  def forest_area_pct: Double
+  def forest_area_pct: Option[Double]
   def electricity_access_pct: Double
   def life_expectancy: Option[Double]
   def child_mortality: Option[Double]
@@ -64,7 +64,7 @@ case class GdpRecord(
   co2_emissions_kt: Double,
   energy_use_per_capita: Double,
   renewable_energy_pct: Double,
-  forest_area_pct: Double,
+  forest_area_pct: Option[Double],
   electricity_access_pct: Double,
   life_expectancy: Option[Double],
   child_mortality: Option[Double],

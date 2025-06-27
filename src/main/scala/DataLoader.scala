@@ -32,7 +32,7 @@ object DataLoader {
         safeToDouble(row("co2_emissions_kt")),
         safeToDouble(row("energy_use_per_capita")),
         safeToDouble(row("renewable_energy_pct")),
-        safeToDouble(row("forest_area_pct")),
+        safeToOptionDouble(row("forest_area_pct")),
         safeToDouble(row("electricity_access_pct")),
         safeToOptionDouble(row("life_expectancy")),
         safeToOptionDouble(row("child_mortality")),
