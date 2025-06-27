@@ -14,11 +14,11 @@ trait GdpData {
   def co2_emissions_kt: Double
   def energy_use_per_capita: Double
   def renewable_energy_pct: Double
-  def forest_area_pct: Double
+  def forest_area_pct: Option[Double]
   def electricity_access_pct: Double
-  def life_expectancy: Double
-  def child_mortality: Double
-  def school_enrollment_secondary: Double
+  def life_expectancy: Option[Double]
+  def child_mortality: Option[Double]
+  def school_enrollment_secondary: Option[Double]
   def health_expenditure_pct_gdp: Double
   def hospital_beds_per_1000: Double
   def physicians_per_1000: Double
@@ -33,9 +33,9 @@ trait GdpData {
   def ecological_preservation_index: Double
   def renewable_energy_efficiency: Double
   def human_development_composite: Double
-  def healthcare_capacity_index: Double
+  def healthcare_capacity_index: Option[Double]
   def digital_connectivity_index: Double
-  def health_development_ratio: Double
+  def health_development_ratio: Option[Double]
   def education_health_ratio: Double
   def years_since_2000: Int
   def years_since_century: Int
@@ -64,11 +64,11 @@ case class GdpRecord(
   co2_emissions_kt: Double,
   energy_use_per_capita: Double,
   renewable_energy_pct: Double,
-  forest_area_pct: Double,
+  forest_area_pct: Option[Double],
   electricity_access_pct: Double,
-  life_expectancy: Double,
-  child_mortality: Double,
-  school_enrollment_secondary: Double,
+  life_expectancy: Option[Double],
+  child_mortality: Option[Double],
+  school_enrollment_secondary: Option[Double],
   health_expenditure_pct_gdp: Double,
   hospital_beds_per_1000: Double,
   physicians_per_1000: Double,
@@ -83,9 +83,9 @@ case class GdpRecord(
   ecological_preservation_index: Double,
   renewable_energy_efficiency: Double,
   human_development_composite: Double,
-  healthcare_capacity_index: Double,
+  healthcare_capacity_index: Option[Double],
   digital_connectivity_index: Double,
-  health_development_ratio: Double,
+  health_development_ratio: Option[Double],
   education_health_ratio: Double,
   years_since_2000: Int,
   years_since_century: Int,
