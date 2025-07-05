@@ -86,13 +86,13 @@ object AdvanceMain extends App {
         val toYear = askYear("Enter end year: ", 2020, allYears)
 
         println("Do you want to see the country with the highest or lowest forest ares loss?")
-        print("Type 'highest' or 'lowest': ")
+        print("Type 'highest' or 'lowest' (default is highest): ")
         val highest = readLine().trim.toLowerCase match {
           case "lowest" => false
           case _ => true
         }
 
-        val result = analyzer.forestLossQuery(fromYear, toYear, highest, allYears)
+        val result = analyzer.forestLossQuery(fromYear, toYear, highest)
         result match {
           case Some((country, loss)) =>
             println(f"$country had the ${if (highest) "highest" else "lowest"} forest ares loss of $loss%.2f%% from $fromYear to $toYear.")

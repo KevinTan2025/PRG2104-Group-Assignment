@@ -60,19 +60,12 @@ class Agent(val records: Seq[GdpData]) {
   def forestLossQuery(fromYear: Int = 2000,
                       toYear: Int = 2020,
                       highest: Boolean = true,
-                      validYears: Seq[Int]
                       ): Option[(String, Double)] = {
-    
-    //Validate years first
-    if (!validYears.contains(fromYear) || !validYears.contains(toYear)) {
-      println(s"Error: Invalid years selected. Available years: ${validYears.min} to ${validYears.max}")
-      return None
-    }
-    
+
     //Group records by country
     val group = records.groupBy(_.country_name).flatMap{case (country, recs) =>
       val byYear = recs.filter(_.forest_area_pct.isDefined).map(r => r.year -> r.forest_area_pct.get).toMap
-      
+
       for {
         start <- byYear.get(fromYear)
         end <- byYear.get(toYear)
@@ -81,7 +74,7 @@ class Agent(val records: Seq[GdpData]) {
         country -> loss
       }
     }
-    
+
     //Return country with the highest or lowest loss
     if (group.isEmpty) None
     else if (highest) Some(group.maxBy(_._2))
