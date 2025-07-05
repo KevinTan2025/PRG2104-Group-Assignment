@@ -16,7 +16,7 @@ object AdvanceMain extends App {
     println("What would you like to analyze?")
     println("1. Get the country/year with the highest or lowest life expectancy.")
     println("2. Rank countries based on selected health and education indicators.")
-    println("3. ")
+    println("3. Get the country that lost the highest or lowest forest area between selected years.")
     print("Enter your choice (1/2/3): ")
 
     val choice = readLine().trim
@@ -78,11 +78,45 @@ object AdvanceMain extends App {
           }
         }
 
+      //Q3: Forest Area Loss
+      case "3" =>
+        println(s"Available years: ${allYears.mkString(", ")}")
+
+        val fromYear = askYear("Enter start year: ", 2000, allYears)
+        val toYear = askYear("Enter end year: ", 2020, allYears)
+
+        println("Do you want to see the country with the highest or lowest forest ares loss?")
+        print("Type 'highest' or 'lowest': ")
+        val highest = readLine().trim.toLowerCase match {
+          case "lowest" => false
+          case _ => true
+        }
+
+        val result = analyzer.forestLossQuery(fromYear, toYear, highest, allYears)
+        result match {
+          case Some((country, loss)) =>
+            println(f"$country had the ${if (highest) "highest" else "lowest"} forest ares loss of $loss%.2f%% from $fromYear to $toYear.")
+          case None =>
+            println("No data found or invalid year range.")
+        }
 
       case _ =>
         println("Invalid choice. Please select a valid option (1/2/3).")
     }
+  }
 
-
+  // Helper function to ask for a valid year input
+  def askYear(prompt: String, default: Int, validYears: Seq[Int]): Int = {
+    print(prompt)
+    val input = readLine().trim
+    input.toIntOption match {
+      case Some(year) if validYears.contains(year) => year
+      case Some(year) =>
+        println(s"Year $year not found. Using default $default.")
+        default
+      case None =>
+        println(s"Invalid input. Using default $default.")
+        default
+    }
   }
 }
