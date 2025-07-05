@@ -15,7 +15,7 @@ object AdvanceMain extends App {
     println("Welcome to the Global Development Indicator Analyzer!")
     println("What would you like to analyze?")
     println("1. Get the country/year with the highest or lowest life expectancy.")
-    println("2. ")
+    println("2. Rank countries based on selected health and education indicators.")
     println("3. ")
     print("Enter your choice (1/2/3): ")
 
@@ -62,6 +62,22 @@ object AdvanceMain extends App {
           case None =>
             println("No data found for the specified filters.")
         }
+
+      //Q2: Health & Education ranking
+      case "2" =>
+        print("How many top countries do you want to rank? (default is 3): ")
+        val topCountries = readLine().toIntOption.getOrElse(3)
+
+        val result = analyzer.bestHealthEducationQuery(topCountries = topCountries)
+        if (result.isEmpty) {
+          println("No data available to compute rankings.")
+        } else {
+          println(s"Top $topCountries countries in health and education:")
+          result.foreach {case (country, score)=>
+            println(f"$country%-20s | Score: $score%.2f%%")
+        }
+    }
+
 
       case _ =>
         println("Invalid choice. Please select a valid option (1/2/3).")
