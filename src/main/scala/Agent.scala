@@ -39,11 +39,11 @@ class Agent(val records: Seq[GdpData]) {
     val group = records.groupBy(_.country_name).map{case (country, recs) =>
       //Get the average of each indicator
       val scores = indicators.map{
-        case "lifeExpectancy" => averageOfDefined(recs.map(_.life_expectancy))
-        case "childMortality" => averageOfDefined(recs.map(_.child_mortality)).map(100 - _) 
-        case "schoolEnrollment" => averageOfDefined(recs.map(_.school_enrollment_secondary))
-        case "healthcareCapacity" => averageOfDefined(recs.map(_.healthcare_capacity_index))
-        case "healthDevelopmentRatio" => averageOfDefined(recs.map(_.health_development_ratio))
+        case "life_expectancy" => averageOfDefined(recs.map(_.life_expectancy))
+        case "child_mortality" => averageOfDefined(recs.map(_.child_mortality)).map(100 - _) 
+        case "school_enrollment_secondary" => averageOfDefined(recs.map(_.school_enrollment_secondary))
+        case "healthcare_capacity_index" => averageOfDefined(recs.map(_.healthcare_capacity_index))
+        case "health_development_ratio" => averageOfDefined(recs.map(_.health_development_ratio))
         case _ => None //ignore unknown indicators
       }
       

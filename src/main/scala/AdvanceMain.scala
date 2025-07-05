@@ -74,9 +74,9 @@ object AdvanceMain extends App {
         } else {
           println(s"Top $topCountries countries in health and education:")
           result.foreach {case (country, score)=>
-            println(f"$country%-20s | Score: $score%.2f%%")
+            println(f"$country%-30s | Average Score: $score%.2f%%")
+          }
         }
-    }
 
 
       case _ =>
