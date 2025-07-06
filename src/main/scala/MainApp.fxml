@@ -42,7 +42,7 @@
                   <HBox alignment="CENTER_LEFT" prefHeight="25.0" prefWidth="522.0" spacing="10.0">
                      <children>
                         <Label text="Answer:" />
-                        <TextField editable="false" />
+                        <TextField fx:id="answerField1" editable="false" prefWidth="400.0" />
                      </children>
                   </HBox>
                </children>
@@ -64,7 +64,7 @@
                   <HBox alignment="CENTER_LEFT" spacing="10.0">
                      <children>
                         <Label text="Answer:" />
-                        <TextField editable="false" />
+                        <TextField fx:id="answerField2" editable="false" prefWidth="400.0" />
                      </children>
                   </HBox>
                </children>
@@ -94,7 +94,7 @@
                   <HBox alignment="CENTER_LEFT" spacing="10.0">
                      <children>
                         <Label text="Answer:" />
-                        <TextField editable="false" prefHeight="25.0" prefWidth="154.0" />
+                        <TextField fx:id="answerField3" editable="false" prefHeight="25.0" prefWidth="400.0" />
                      </children>
                   </HBox>
                </children>
