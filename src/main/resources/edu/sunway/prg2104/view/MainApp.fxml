@@ -99,6 +99,11 @@
                   </HBox>
                </children>
             </VBox>
+            <Label prefHeight="14.0" prefWidth="196.0" text="Tips: Edit the values for a SURPRISE!" textFill="#061ebf" wrapText="true">
+               <font>
+                  <Font name="Franklin Gothic Demi Cond" size="12.0" />
+               </font>
+            </Label>
             <HBox alignment="CENTER" prefHeight="68.0" prefWidth="759.0" spacing="20.0">
                <children>
                   <Button fx:id="exitButton" mnemonicParsing="false" onAction="#handleExit" style="-fx-background-color: #95a5a6; -fx-text-fill: white; -fx-padding: 10 20;" text="Exit Application" />
