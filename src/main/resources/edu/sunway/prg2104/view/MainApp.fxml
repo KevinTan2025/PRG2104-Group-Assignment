@@ -99,6 +99,11 @@
                   </HBox>
                </children>
             </VBox>
+            <HBox alignment="CENTER" prefHeight="68.0" prefWidth="759.0" spacing="20.0">
+               <children>
+                  <Button fx:id="exitButton" mnemonicParsing="false" onAction="#handleExit" style="-fx-background-color: #95a5a6; -fx-text-fill: white; -fx-padding: 10 20;" text="Exit Application" />
+               </children>
+            </HBox>
          </children>
          <padding>
             <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
