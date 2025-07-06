@@ -77,6 +77,20 @@
                         <Font name="System Bold" size="14.0" />
                      </font>
                   </Label>
+                  <Label style="-fx-text-fill: #7f8c8d;" text="Customize the value from 2000 - 2020 yourself! Note: only values from 2000 to 2020 are accepted" wrapText="true">
+                     <font>
+                        <Font size="11.0" />
+                     </font>
+                  </Label>
+                  <HBox alignment="CENTER_LEFT" prefHeight="25.0" prefWidth="522.0" spacing="10.0">
+                     <children>
+                        <Label text="From:" />
+                        <TextField fx:id="fromYearField" prefWidth="80.0" promptText="2000" />
+                        <Label text="To:" />
+                        <TextField fx:id="toYearField" prefWidth="80.0" promptText="2020" />
+                        <Button fx:id="findbutton3" alignment="CENTER_RIGHT" mnemonicParsing="false" onAction="#handleQ3" text="Show Answer" />
+                     </children>
+                  </HBox>
                   <HBox alignment="CENTER_LEFT" spacing="10.0">
                      <children>
                         <Label text="Answer:" />
