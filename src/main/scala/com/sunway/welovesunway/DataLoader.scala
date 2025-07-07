@@ -1,3 +1,5 @@
+package com.sunway.welovesunway
+
 import com.github.tototoshi.csv._
 import java.io.File
 
