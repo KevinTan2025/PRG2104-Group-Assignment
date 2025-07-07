@@ -39,6 +39,56 @@ class MainController extends Initializable {
     // Set default values for year fields
     fromYearField.setText("2000")
     toYearField.setText("2020")
+    
+    // Auto-run default queries on startup
+    runDefaultQueries()
+  }
+  
+  private def runDefaultQueries(): Unit = {
+    // Auto-run Q1 with default "Highest" setting
+    try {
+      val result = analyzer.lifeExpectancyQuery(highest = true)
+      result match {
+        case Some((country, year, value)) =>
+          val formattedValue = f"$value%.2f"
+          answerField1.setText(s"${country.toUpperCase} achieved the highest life expectancy of ${formattedValue}% in $year")
+        case None =>
+          answerField1.setText("No data found for the specified criteria")
+      }
+    } catch {
+      case e: Exception =>
+        answerField1.setText(s"Error: ${e.getMessage}")
+    }
+    
+    // Auto-run Q2
+    try {
+      val result = analyzer.bestHealthEducationQuery(topCountries = 1)
+      if (result.nonEmpty) {
+        val (country, score) = result.head
+        val formattedScore = f"$score%.2f"
+        answerField2.setText(s"${country.toUpperCase} performed best in Health & Education with average score: ${formattedScore}")
+      } else {
+        answerField2.setText("No data available to compute rankings")
+      }
+    } catch {
+      case e: Exception =>
+        answerField2.setText(s"Error: ${e.getMessage}")
+    }
+    
+    // Auto-run Q3 with default years (2000-2020)
+    try {
+      val result = analyzer.forestLossQuery(fromYear = 2000, toYear = 2020, highest = true)
+      result match {
+        case Some((country, loss)) =>
+          val formattedLoss = f"$loss%.2f"
+          answerField3.setText(s"${country.toUpperCase} had the highest forest area loss of ${formattedLoss}% from 2000 to 2020")
+        case None =>
+          answerField3.setText("No data found for the specified year range")
+      }
+    } catch {
+      case e: Exception =>
+        answerField3.setText(s"Error: ${e.getMessage}")
+    }
   }
   
   @FXML
@@ -51,7 +101,8 @@ class MainController extends Initializable {
       
       result match {
         case Some((country, year, value)) =>
-          val resultText = s"$country achieved the ${selectedValue.toLowerCase} life expectancy of ${value}% in $year"
+          val formattedValue = f"$value%.2f"
+          val resultText = s"${country.toUpperCase} achieved the ${selectedValue.toLowerCase} life expectancy of ${formattedValue}% in $year"
           answerField1.setText(resultText)
         case None =>
           answerField1.setText("No data found for the specified criteria")
@@ -69,7 +120,8 @@ class MainController extends Initializable {
       
       if (result.nonEmpty) {
         val (country, score) = result.head
-        answerField2.setText(s"$country performed best in Health & Education with average score: ${score}")
+        val formattedScore = f"$score%.2f"
+        answerField2.setText(s"${country.toUpperCase} performed best in Health & Education with average score: ${formattedScore}")
       } else {
         answerField2.setText("No data available to compute rankings")
       }
@@ -89,7 +141,8 @@ class MainController extends Initializable {
       
       result match {
         case Some((country, loss)) =>
-          answerField3.setText(s"$country had the highest forest area loss of ${loss}% from $fromYear to $toYear")
+          val formattedLoss = f"$loss%.2f"
+          answerField3.setText(s"${country.toUpperCase} had the highest forest area loss of ${formattedLoss}% from $fromYear to $toYear")
         case None =>
           answerField3.setText("No data found for the specified year range")
       }
@@ -112,6 +165,9 @@ class MainController extends Initializable {
     
     // Reset combo box to default value
     highestLowestCombo1.setValue("Highest")
+    
+    // Re-run default queries after reset
+    runDefaultQueries()
   }
   
   @FXML
