@@ -1,3 +1,15 @@
+/**
+ * WeLoveSunway API CLI Main
+ *
+ *
+ * Used https://github.com/tototoshi/scala-csv as reference
+ * CLIMain.scala
+ * This file contains the main entry point for the WeLoveSunway CLI application.
+ * It handles user interactions and query execution.
+ * @author Wong Yu Xuan
+ * @version 1.0
+ */
+
 package com.sunway.welovesunway
 
 import scala.io.StdIn.readLine

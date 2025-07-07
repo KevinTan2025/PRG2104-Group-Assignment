@@ -1,3 +1,16 @@
+/**
+ * WeLoveSunway GUI Application
+ *
+ *
+ * Used https://youtu.be/IZCwawKILsk?si=XoMASIBUEfF1I_lF as reference
+ * MainController.scala
+ * This file contains the main controller for the WeLoveSunway application.
+ * It handles user interactions, data loading, and query execution.
+ * @author Yeoh JinWei fxml gui part
+ * @author Tan Kok Feng data loading and query execution part
+ * @version 1.0
+ */
+
 package com.sunway.welovesunway
 
 import javafx.fxml.FXML
@@ -34,7 +47,7 @@ class MainController extends Initializable {
     // Initialize ComboBox with options
     val options = FXCollections.observableArrayList("Highest", "Lowest")
     highestLowestCombo1.setItems(options)
-    highestLowestCombo1.setValue("Highest") // 设置默认值为 "Highest"
+    highestLowestCombo1.setValue("Highest") // Set default value
     
     // Set default values for year fields
     fromYearField.setText("2000")

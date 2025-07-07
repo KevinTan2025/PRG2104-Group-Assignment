@@ -1,15 +1,19 @@
+/**
+ * WeLoveSunway API GUI Entry Point
+ *
+ *
+ * Used https://youtu.be/IZCwawKILsk?si=XoMASIBUEfF1I_lF as reference
+ * Main.scala
+ * This file contains the main entry point for the WeLoveSunway application.
+ * It handles data loading and query execution.
+ * @author Tan Kok Feng
+ * @version 1.0
+ */
+
 package com.sunway.welovesunway
 
 import javafx.application.Application
 
-/**
- * Main entry point for the Global Development Indicator Analyzer GUI application.
- * This is the primary launcher that starts the JavaFX GUI interface.
- * 
- * Usage:
- *   - Run with: sbt run
- *   - Or directly: scala Main
- */
 object Main {
   def main(args: Array[String]): Unit = {
     println("=" * 60)

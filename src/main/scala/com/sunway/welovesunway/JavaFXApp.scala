@@ -1,3 +1,17 @@
+/**
+ * WeLoveSunway GUI Entry Point
+ *
+ *
+ * Used https://youtu.be/IZCwawKILsk?si=XoMASIBUEfF1I_lF as reference
+ * JavaFXApp.scala
+ * This file contains the main entry point for the WeLoveSunway GUI application.
+ * It sets up the JavaFX application and loads the main FXML layout.
+ * @author Tan Kok Feng
+ * @author Yeoh JinWei fxml gui part
+ * @version 1.0
+ */
+
+
 package com.sunway.welovesunway
 
 import javafx.application.Application

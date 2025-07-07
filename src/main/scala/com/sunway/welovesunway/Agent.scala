@@ -1,3 +1,15 @@
+/**
+ * WeLoveSunway API Middleware
+ *
+ *
+ * Used https://github.com/tototoshi/scala-csv as reference
+ * Agent.scala
+ * This file contains the main agent for the WeLoveSunway application.
+ * It handles data loading and query execution.
+ * @author Wong Yu Xuan
+ * @version 1.0
+ */
+
 package com.sunway.welovesunway
 
 //agent file to handle agent-related operations
