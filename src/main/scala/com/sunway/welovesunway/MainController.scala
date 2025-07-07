@@ -23,6 +23,7 @@ class MainController extends Initializable {
   @FXML private var findbutton3: Button = _
   @FXML private var answerField3: TextField = _
   
+  @FXML private var resetButton: Button = _
   @FXML private var exitButton: Button = _
   
   // Load data and create analyzer
@@ -96,6 +97,21 @@ class MainController extends Initializable {
       case e: Exception =>
         answerField3.setText(s"Error: ${e.getMessage}")
     }
+  }
+  
+  @FXML
+  private def handleReset(event: ActionEvent): Unit = {
+    // Clear all answer fields
+    answerField1.clear()
+    answerField2.clear()
+    answerField3.clear()
+    
+    // Reset year fields to default values
+    fromYearField.setText("2000")
+    toYearField.setText("2020")
+    
+    // Reset combo box to default value
+    highestLowestCombo1.setValue("Highest")
   }
   
   @FXML
