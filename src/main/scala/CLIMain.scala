@@ -2,7 +2,7 @@ package com.sunway.welovesunway
 
 import scala.io.StdIn.readLine
 
-object AdvanceMain extends App {
+object CLIMain extends App {
   val data = DataLoader.loadData("src/main/resources/Global_Development_Indicators_2000_2020.csv")
   val analyzer = new Agent(data)
 

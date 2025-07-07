@@ -2,7 +2,10 @@ ThisBuild / version := "0.1.0-SNAPSHOT"
 ThisBuild / scalaVersion := "3.3.6"
 run / fork := false
 
-val javafxVersion = "24.0.1"
+// Set the main class for GUI entry point
+Compile / mainClass := Some("com.sunway.welovesunway.Main")
+
+val javafxVersion = "21.0.5"
 
 libraryDependencies ++= Seq(
   "org.openjfx" % "javafx-controls" % javafxVersion,
