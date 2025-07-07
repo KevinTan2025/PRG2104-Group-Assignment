@@ -11,7 +11,7 @@
             <option value="$PROJECT_DIR$/project" />
           </set>
         </option>
-        <option name="sbtVersion" value="1.10.7" />
+        <option name="sbtVersion" value="1.10.11" />
         <option name="separateProdAndTestSources" value="false" />
       </SbtProjectSettings>
     </option>
