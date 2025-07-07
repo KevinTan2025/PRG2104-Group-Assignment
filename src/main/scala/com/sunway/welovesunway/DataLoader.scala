@@ -1,3 +1,15 @@
+/**
+ * WeLoveSunway API Data Loader
+ *
+ *
+ * Used https://github.com/tototoshi/scala-csv as reference
+ * DataLoader.scala
+ * This file contains the data loading functionality for the WeLoveSunway application.
+ * It handles loading data from CSV files and converting it into a usable format.
+ * @author Tan Kok Feng
+ * @version 1.0
+ */
+
 package com.sunway.welovesunway
 
 import com.github.tototoshi.csv._

@@ -1,3 +1,17 @@
+/**
+ * WeLoveSunway API Data Model
+ *
+ *
+ * Used https://github.com/tototoshi/scala-csv as reference
+ * GdpData.scala
+ * This file contains the data model for the WeLoveSunway application.
+ * It defines the structure of the GDP-related data used in the application.
+ * @author Tan Kok Feng
+ * @author Yeah JinWei restructured the data model
+ * @version 1.0
+ */
+
+
 package com.sunway.welovesunway
 
 trait GdpData {
