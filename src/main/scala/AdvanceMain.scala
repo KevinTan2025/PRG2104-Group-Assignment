@@ -1,3 +1,5 @@
+package com.sunway.welovesunway
+
 import scala.io.StdIn.readLine
 
 object AdvanceMain extends App {

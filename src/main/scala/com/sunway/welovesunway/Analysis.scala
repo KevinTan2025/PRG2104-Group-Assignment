@@ -1,3 +1,5 @@
+package com.sunway.welovesunway
+
 class Analysis(val records: Seq[GdpData]) {
 
   //Utility function to calculate the average from a sequence of Option[Double]

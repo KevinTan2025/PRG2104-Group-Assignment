@@ -1,3 +1,5 @@
+package com.sunway.welovesunway
+
 //agent file to handle agent-related operations
 
 class Agent(val records: Seq[GdpData]) {

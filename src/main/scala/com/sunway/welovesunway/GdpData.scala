@@ -1,3 +1,5 @@
+package com.sunway.welovesunway
+
 trait GdpData {
   def year: Int
   def country_code: String
