@@ -3,15 +3,74 @@
 ## Subject & Course Information
 
 **Faculty:** Faculty of Engineering and Technology
+
 **Course:** PRG2104: Object Oriented Programming
-**Programme:** BSc (Hons) Information Technology / BSc (Hons) Computer Science
+
+**Programme:** BSc (Hons) Computer Science
+
 **Year:** Year 2
+
 **Semester:** Academic Session 2025, Semester 3
+
 **Assignment:** Assignment 2
 
 ## Project Overview
 
-The Global Development Indicators Analyzer is a comprehensive Scala application that analyzes global development data from 2000-2020. This project demonstrates advanced object-oriented programming principles, polymorphism, and sophisticated collection operations to answer critical questions about global development trends.
+**The Global Development Indicators Analyzer** is a comprehensive Scala application that analyzes global development data from 2000-2020. This project demonstrates **advanced object-oriented programming principles, polymorphism, and sophisticated collection** operations to answer critical questions about global development trends.
+
+## Demonstration
+
+### Project Showcase
+
+This Global Development Indicators Analyzer demonstrates excellence in object-oriented programming through several key implementations:
+
+#### 1. GUI Application Demo
+
+- **JavaFX Interface:** Modern, user-friendly graphical interface built with JavaFX
+- **FXML Layout:** Separation of UI design and logic using FXML files
+- **Interactive Controls:** Dynamic filtering and query execution through GUI components
+- **Real-time Results:** Immediate display of analytical results with formatted output
+
+![GUI Application Screenshot](images/gui.png)
+*Figure 1: JavaFX GUI Application Interface - Professional data analysis dashboard with interactive controls*
+
+#### 2. CLI Application Demo
+
+- **Interactive Command-Line Interface:** Professional CLI with guided user input
+- **Flexible Query Options:** Multiple filtering criteria for each analysis type
+- **Data Validation:** Input verification for years, countries, and analysis parameters
+- **Formatted Output:** Clean, readable results presentation
+
+##### Question 1: Life Expectancy Analysis
+
+**With Custom Filtering:**
+![CLI Q1 With Customization](images/cli_q1_with_customization.png)
+*Figure 2a: CLI Life Expectancy Query with Country/Year Filtering*
+
+**Standard Query:**
+![CLI Q1 Without Customization](images/cli_q1_without_customization.png)
+*Figure 2b: CLI Life Expectancy Query - Default Parameters*
+
+##### Question 2: Health & Education Excellence
+
+**With Custom Indicators:**
+![CLI Q2 With Customization](images/cli_q2_with_customization.png)
+*Figure 3a: CLI Health & Education Ranking with Custom Indicator Selection*
+
+**Standard Analysis:**
+![CLI Q2 Without Customization](images/cli_q2_without_customization.png)
+*Figure 3b: CLI Health & Education Ranking - Default Multi-Criteria Analysis*
+
+##### Question 3: Forest Area Loss Analysis
+
+**With Custom Time Range:**
+![CLI Q3 With Customization](images/cli_q3_with_customization.png)
+*Figure 4a: CLI Forest Area Loss Analysis with Custom Year Range*
+
+**Standard Period (2000-2020):**
+![CLI Q3 Without Customization](images/cli_q3_without_customization.png)
+*Figure 4b: CLI Forest Area Loss Analysis - Standard 20-Year Period*
+
 
 ## Assignment Questions Addressed
 
@@ -184,6 +243,14 @@ PRG2104-Final-Assignment/
 ├── build.sbt                       # SBT build configuration
 ├── .gitignore                      # Git ignore file
 ├── README.md                       # Project documentation
+├── images/                         # Project demonstration screenshots
+│   ├── gui.png                     # GUI application interface
+│   ├── cli_q1_with_customization.png     # CLI Q1 custom filtering demo
+│   ├── cli_q1_without_customization.png  # CLI Q1 standard demo
+│   ├── cli_q2_with_customization.png     # CLI Q2 custom indicators demo
+│   ├── cli_q2_without_customization.png  # CLI Q2 standard demo
+│   ├── cli_q3_with_customization.png     # CLI Q3 custom time range demo
+│   └── cli_q3_without_customization.png  # CLI Q3 standard demo
 ├── py/                             # Python analysis scripts
 │   ├── run.py                      # Python data analysis
 │   ├── output.txt                  # Analysis results
@@ -229,59 +296,6 @@ sbt run
 ```bash
 sbt "runMain com.sunway.welovesunway.CLIMain"
 ```
-
-## Demonstration
-
-### Project Showcase
-
-This Global Development Indicators Analyzer demonstrates excellence in object-oriented programming through several key implementations:
-
-#### 1. GUI Application Demo
-
-- **JavaFX Interface:** Modern, user-friendly graphical interface built with JavaFX
-- **FXML Layout:** Separation of UI design and logic using FXML files
-- **Interactive Controls:** Dynamic filtering and query execution through GUI components
-- **Real-time Results:** Immediate display of analytical results with formatted output
-
-![GUI Application Screenshot](images/gui.png)
-*Figure 1: JavaFX GUI Application Interface - Professional data analysis dashboard with interactive controls*
-
-#### 2. CLI Application Demo
-
-- **Interactive Command-Line Interface:** Professional CLI with guided user input
-- **Flexible Query Options:** Multiple filtering criteria for each analysis type
-- **Data Validation:** Input verification for years, countries, and analysis parameters
-- **Formatted Output:** Clean, readable results presentation
-
-##### Question 1: Life Expectancy Analysis
-
-**With Custom Filtering:**
-![CLI Q1 With Customization](images/cli_q1_with_customization.png)
-*Figure 2a: CLI Life Expectancy Query with Country/Year Filtering*
-
-**Standard Query:**
-![CLI Q1 Without Customization](images/cli_q1_without_customization.png)
-*Figure 2b: CLI Life Expectancy Query - Default Parameters*
-
-##### Question 2: Health & Education Excellence
-
-**With Custom Indicators:**
-![CLI Q2 With Customization](images/cli_q2_with_customization.png)
-*Figure 3a: CLI Health & Education Ranking with Custom Indicator Selection*
-
-**Standard Analysis:**
-![CLI Q2 Without Customization](images/cli_q2_without_customization.png)
-*Figure 3b: CLI Health & Education Ranking - Default Multi-Criteria Analysis*
-
-##### Question 3: Forest Area Loss Analysis
-
-**With Custom Time Range:**
-![CLI Q3 With Customization](images/cli_q3_with_customization.png)
-*Figure 4a: CLI Forest Area Loss Analysis with Custom Year Range*
-
-**Standard Period (2000-2020):**
-![CLI Q3 Without Customization](images/cli_q3_without_customization.png)
-*Figure 4b: CLI Forest Area Loss Analysis - Standard 20-Year Period*
 
 #### 3. Advanced OOP Features in Action
 
