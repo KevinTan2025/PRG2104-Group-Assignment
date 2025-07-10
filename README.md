@@ -397,6 +397,22 @@ for {
 - **Documentation:** Comprehensive code comments and API documentation
 - **Testing-Ready:** Structure supports unit testing and integration testing
 
+## Benefits
+**Flexible, reusable methods.** Queries written once for GdpData records work for any data subset. For example, lifeExpectancyQuery can be applied to a sequence of records from any country or year without change. We wrote each query abstractly for the trait, so adding a new data source, like another CSV with the same schema requires no changes to the analysis logic.
+
+**Extensibility.** Because the trait defines a common interface, adding new indicators or record types is simpler. If we extend GdpData with new fields or create a new subclass with extra data, existing queries on the trait are able to work while ignoring the new fields, and we can write additional query methods for the new fields without rewriting core logic. Allowing new cases to fit in without breaking our older code.
+
+**Clean and maintainable code.** The CLI and JavaFX GUI layers simply call these abstract query methods and display results, without needing to know the concrete record type. The Agent hides all details of how the data is processed. Because we use high-order functions and trait types, the query logic is concise and clear. For example, rather than nested loops and type checks, we utilized .filter and .groupBy, which makes the code concise. Increasing our code’s readability and modifiability.
+
+## Limitations
+**Type inference and complexity.** Chaining many collection operations on abstract types sometimes made Scala’s type inference hard to manage. The return types involving Option, and collections (Option & Seq) can become complicated. In some cases, we had to add explicit type annotations or helper methods to avoid confusing the compiler. For example, handling Option[Double] for nullable fields (life_expectancy) required explicit .get calls or .flatten, which adds verbosity and potential null-safety issues. Debugging a type-mismatch in a long chain was occasionally tricky because error messages referred to high-level types, blurring which step was wrong.
+
+**Immutable vs. mutable collections.** Scala’s collections are by default immutable, which is great for safety but can sometimes be inconvenient. In this project we mostly used immutable Seq and Map, which means every transformation creates new collections. For large datasets, this can have detrimental performance costs. If we needed in-place updates or incremental building (reading a huge CSV record by record), using mutable buffers might have been more efficient, but mixing immutable and mutable code can complicate design. We found that operations like groupBy build large intermediate Maps, and there is no easy way to update them in place. Switching to mutable structures (ArrayBuffer) could improve performance but would reduce the elegance of the code.
+
+**Debugging abstract logic.** When our code fails, it often fails at the abstract interface rather than concrete data. For example, if a query logic bug occurred, stack traces pointed to the collection operations on GdpData rather than indicating a problem in a specific field. Since our queries often use anonymous functions like _.country_name or _.forest_area_pct.get, an out-of-bounds or missing value error would mention those generic pieces. This made debugging a bit indirect. We had to trace back from the failing step through the polymorphic pipeline to find which record was invalid. In short, the abstraction made some error messages less immediately clear than if we had used concrete loops.
+
+Overall, subtype polymorphism via Scala traits and the collection API gave us increased flexibility along with a cleaner code, but it required paying extra attention to type details and in some instances, it would increase the difficulty in debugging our code due to the additional layers of abstraction.
+
 ## Authors
 
 - **Tan Kok Feng (Project Leader):** GUI Framework, Data Model Architecture
