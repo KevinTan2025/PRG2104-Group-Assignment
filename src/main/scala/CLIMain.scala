@@ -36,100 +36,72 @@ object CLIMain extends App {
     val more = readLine().trim.toLowerCase
 
     if (more == "yes") {
-      println("What would you like to analyze?")
-      println("1. Get the country/year with the highest or lowest life expectancy.")
-      println("2. Rank countries based on selected health and education indicators.")
-      println("3. Get the country that lost the highest or lowest forest area between selected years.")
-      print("Enter your choice (1/2/3): ")
+      var continue = true
+      while (continue) {
+        println("\nWhat would you like to analyze?")
+        println("1. Get the country/year with the highest or lowest life expectancy.")
+        println("2. Rank countries based on selected health and education indicators.")
+        println("3. Get the country that lost the highest or lowest forest area between selected years.")
+        println("Type 'exit' to quit the program.")
+        print("Enter your choice (1/2/3): ")
 
-      val choice = readLine().trim
+        readLine().trim.toLowerCase match {
+          //Q1: Life Expectancy
+          case "1" =>
+            val highest = askHighestOrLowest()
+            val countryFilter = askCountryFilter(allCountries)
+            val yearFilter = askYearFilter(allYears)
 
-      choice match {
-        //Q1: Life Expectancy
-        case "1" =>
-          println("Do you want the highest or lowest life expectancy?")
-          print("Type 'highest' or 'lowest' (default is highest): ")
-          val highest = readLine().trim.toLowerCase match {
-            case "lowest" => false
-            case _ => true
-          }
-
-          print("Filter by country? (leave blank to skip): ")
-          val countryFilter = readLine().trim match {
-            case "" => None
-            case input if allCountries.contains(input) => Some(input)
-            case input =>
-              println(s"'$input' not found in dataset. Ignoring filter.")
-              None
-          }
-
-          print("Filter by year? (leave blank to skip): ")
-          val yearFilter = readLine().trim match {
-            case "" => None
-            case input =>
-              input.toIntOption match {
-                case Some(y) if allYears.contains(y) => Some(y)
-                case Some(y) =>
-                  println(s"Year $y not in dataset. Ignoring filter.")
-                  None
-                case None =>
-                  println(s"Invalid year input. Ignoring filter.")
-                  None
-              }
-          }
-
-          val result = analyzer.lifeExpectancyQuery(highest, countryFilter, yearFilter)
-          result match {
-            case Some((country, year, value)) =>
-              println(f"$country had the ${if (highest) "highest" else "lowest"} life expectancy of $value%.2f%% in $year.")
-            case None =>
-              println("No data found for the specified filters.")
-          }
-
-        //Q2: Health & Education ranking
-        case "2" =>
-          print("How many top countries do you want to rank? (default is 3): ")
-          val topCountries = readLine().toIntOption.getOrElse(3)
-
-          val result = analyzer.bestHealthEducationQuery(topCountries = topCountries)
-          if (result.isEmpty) {
-            println("No data available to compute rankings.")
-          } else {
-            println(s"Top $topCountries countries in health and education:")
-            result.foreach {case (country, score)=>
-              println(f"$country%-30s | Average Score: $score%.2f%%")
+            val result = analyzer.lifeExpectancyQuery(highest, countryFilter, yearFilter)
+            result match {
+              case Some((country, year, value)) =>
+                println(f"$country had the ${if (highest) "highest" else "lowest"} life expectancy of $value%.2f%% in $year.")
+              case None =>
+                println("No data found for the specified filters.")
             }
-          }
 
-        //Q3: Forest Area Loss
-        case "3" =>
-          println(s"Available years: ${allYears.mkString(", ")}")
+          //Q2: Health & Education ranking
+          case "2" =>
+            print("\nHow many top countries do you want to rank? (default is 3): ")
+            val topCountries = readLine().toIntOption.getOrElse(3)
 
-          val fromYear = askYear("Enter start year: ", 2000, allYears)
-          val toYear = askYear("Enter end year: ", 2020, allYears)
+            val result = analyzer.bestHealthEducationQuery(topCountries = topCountries)
+            if (result.isEmpty) {
+              println("No data available to compute rankings.")
+            } else {
+              println(s"Top $topCountries countries in health and education:")
+              result.foreach { case (country, score) =>
+                println(f"$country%-30s | Average Score: $score%.2f%%")
+              }
+            }
 
-          println("Do you want to see the country with the highest or lowest forest area loss?")
-          print("Type 'highest' or 'lowest' (default is highest): ")
-          val highest = readLine().trim.toLowerCase match {
-            case "lowest" => false
-            case _ => true
-          }
+          //Q3: Forest Area Loss
+          case "3" =>
+            println(s"\nAvailable years: ${allYears.mkString(", ")}")
 
-          val result = analyzer.forestLossQuery(fromYear, toYear, highest)
-          result match {
-            case Some((country, loss)) =>
-              println(f"$country had the ${if (highest) "highest" else "lowest"} forest ares loss of $loss%.2f%% from $fromYear to $toYear.")
-            case None =>
-              println("No data found or invalid year range.")
-          }
+            val fromYear = askYear("Enter start year: ", 2000, allYears)
+            val toYear = askYear("Enter end year: ", 2020, allYears)
+            val highest = askHighestOrLowest()
 
-        case _ =>
-          println("Invalid choice. Please select a valid option (1/2/3).")
+            val result = analyzer.forestLossQuery(fromYear, toYear, highest)
+            result match {
+              case Some((country, loss)) =>
+                println(f"$country had the ${if (highest) "highest" else "lowest"} forest ares loss of $loss%.2f%% from $fromYear to $toYear.")
+              case None =>
+                println("No data found or invalid year range.")
+            }
+
+          case "exit" =>
+            continue = false
+            println("Thank you for using the Global Development Indicator Analyzer! Goodbye!")
+
+          case _ =>
+            println("Invalid choice. Please select a valid option (1/2/3).")
+        }
       }
-    }
-    else {
-      println("Thank you for using the Global Development Indicator Analyzer! Goodbye!")
-    }
+    } else {
+        println("Thank you for using the Global Development Indicator Analyzer! Goodbye!")
+      }
   }
 
   //Show basic results when the program starts
@@ -176,6 +148,46 @@ object CLIMain extends App {
       case None =>
         println(s"Invalid input. Using default $default.")
         default
+    }
+  }
+
+  //Helper function to ask for highest or lowest
+  def askHighestOrLowest(default: Boolean = true): Boolean = {
+    println("\nDo you want the highest or lowest value?")
+    print("Type 'highest' or 'lowest' (default is highest): ")
+    readLine().trim.toLowerCase match {
+      case "lowest" => false
+      case _ => true //default is highest
+    }
+  }
+
+  //Helper function to ask for valid year filter
+  def askCountryFilter(allCountries: Seq[String]): Option[String] = {
+    print("Filter by country? (leave blank to skip): ")
+    readLine().trim match {
+      case "" => None
+      case input if allCountries.contains(input) => Some(input)
+      case input =>
+        println(s"'$input' not found in dataset. Ignoring filter.")
+        None
+    }
+  }
+
+  //Helper function to ask for valid year filter
+  def askYearFilter(allYears: Seq[Int]): Option[Int] = {
+    print("Filter by year? (leave blank to skip): ")
+    readLine().trim match {
+      case "" => None
+      case input =>
+        input.toIntOption match {
+          case Some(y) if allYears.contains(y) => Some(y)
+          case Some(y) =>
+            println(s"Year $y not in dataset. Ignoring filter.")
+            None
+          case None =>
+            println(s"Invalid year input. Ignoring filter.")
+            None
+        }
     }
   }
 }
