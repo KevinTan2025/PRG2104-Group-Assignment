@@ -419,5 +419,5 @@ Overall, subtype polymorphism via Scala traits and the collection API gave us in
   GitHub: [KevinTan2025](https://github.com/KevinTan2025)
 - **Wong Yu Xuan:** CLI Interface, Core Analytical Engine
   GitHub: [Meghan924](https://github.com/Meghan924)
-- **Yeah JinWei:** Data Model Restructuring
+- **Yeah JinWei:** Data Model Restructuring, GUI, Section 2
   GitHub: [Yeoh-JinWei](https://github.com/Yeoh-JinWei)
