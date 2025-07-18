@@ -47,7 +47,7 @@ This Global Development Indicators Analyzer demonstrates excellence in object-or
 
 **Complete Basic Analysis (All Three Questions):**
 ![CLI 3-in-1 Analysis](images/3in1.png)
-*Figure 2: Complete CLI Analysis - Automatic display of all three assignment questions with red-highlighted answers*
+*Figure 2: Complete CLI Analysis - Automatic display of all three assignment questions with filtered answers*
 
 ##### Detailed Interactive Features
 
@@ -234,24 +234,18 @@ private def safeToOptionDouble(s: String): Option[Double] =
 ## Project Structure
 
 ```
-PRG2104-Final-Assignment/
-├── build.sbt                       # SBT build configuration
+PRG2104-Group-Assignment/
+├── .git/                           # Git version control directory
 ├── .gitignore                      # Git ignore file
+├── build.sbt                       # SBT build configuration
 ├── README.md                       # Project documentation
 ├── images/                         # Project demonstration screenshots
 │   ├── gui.png                     # GUI application interface
-│   ├── cli_q1_with_customization.png     # CLI Q1 custom filtering demo
-│   ├── cli_q1_without_customization.png  # CLI Q1 standard demo
-│   ├── cli_q2_with_customization.png     # CLI Q2 custom indicators demo
-│   ├── cli_q2_without_customization.png  # CLI Q2 standard demo
-│   ├── cli_q3_with_customization.png     # CLI Q3 custom time range demo
-│   └── cli_q3_without_customization.png  # CLI Q3 standard demo
-├── py/                             # Python analysis scripts
-│   ├── run.py                      # Python data analysis
-│   ├── output.txt                  # Analysis results
-│   └── README.md                   # Python component docs
-├── project/                        # SBT project configuration
-│   └── build.properties            # SBT version specification
+│   ├── 3in1.png                    # Complete CLI analysis (all 3 questions)
+│   ├── cli_q1_with_customization.png          # CLI Q1 custom filtering demo
+│   ├── cli_q2_with_customization-3-rank.png   # CLI Q2 top 3 countries demo
+│   ├── cli_q2_with_customization-5-rank.png   # CLI Q2 top 5 countries demo
+│   └── cli_q3_with_customization.png          # CLI Q3 custom time range demo
 ├── src/
 │   └── main/
 │       ├── scala/
@@ -413,21 +407,21 @@ Overall, subtype polymorphism via Scala traits and the collection API gave us in
 ## Authors
 
 - **Tan Kok Feng (Project Leader):**
-    - Designed GUI framework
-    - Developed data model architecture
-    - Led API integration and interfacing
-    - Finalized project documentation & GitHub readme
-    - GitHub Profile: [KevinTan2025](https://github.com/KevinTan2025)
 
+  - Designed GUI framework
+  - Developed data model architecture
+  - Led API integration and interfacing
+  - Finalized project documentation & GitHub readme
+  - GitHub Profile: [KevinTan2025](https://github.com/KevinTan2025)
 - **Wong Yu Xuan:**
-    - Developed CLI interface
-    - Built core analytical engine
-    - Planned and defined API architecture
-    - GitHub Profile: [Meghan924](https://github.com/Meghan924)
 
-- **Yeah JinWei:**
-    - Restructured data model
-    - Developed GUI interface
-    - Wrote Section 2 of documentation
-    - GitHub Profile: [Yeoh-JinWei](https://github.com/Yeoh-JinWei)
+  - Developed CLI interface
+  - Built core analytical engine
+  - Planned and defined API architecture
+  - GitHub Profile: [Meghan924](https://github.com/Meghan924)
+- **Yeoh JinWei:**
 
+  - Restructured data model
+  - Developed GUI interface
+  - Wrote Section 2 of documentation
+  - GitHub Profile: [Yeoh-JinWei](https://github.com/Yeoh-JinWei)
