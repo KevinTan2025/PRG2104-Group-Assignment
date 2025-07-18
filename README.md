@@ -36,41 +36,36 @@ This Global Development Indicators Analyzer demonstrates excellence in object-or
 
 #### 2. CLI Application Demo
 
-- **Interactive Command-Line Interface:** Professional CLI with guided user input
-- **Flexible Query Options:** Multiple filtering criteria for each analysis type
+- **Interactive Command-Line Interface:** Professional CLI with guided user input and colored output
+- **Automatic Basic Analysis:** Displays answers to all three assignment questions immediately upon startup
+- **Enhanced User Experience:** Features colorized text output with red highlighting for answers
+- **Advanced Interactive Mode:** Optional detailed exploration with custom filtering options
 - **Data Validation:** Input verification for years, countries, and analysis parameters
-- **Formatted Output:** Clean, readable results presentation
+- **Formatted Output:** Clean, readable results presentation with professional styling
 
-##### Question 1: Life Expectancy Analysis
+##### Comprehensive Analysis Overview
 
-**With Custom Filtering:**
+**Complete Basic Analysis (All Three Questions):**
+![CLI 3-in-1 Analysis](images/3in1.png)
+*Figure 2: Complete CLI Analysis - Automatic display of all three assignment questions with red-highlighted answers*
+
+##### Detailed Interactive Features
+
+**Question 1: Life Expectancy Analysis with Custom Filtering:**
 ![CLI Q1 With Customization](images/cli_q1_with_customization.png)
-*Figure 2a: CLI Life Expectancy Query with Country/Year Filtering*
+*Figure 3: CLI Life Expectancy Query - Interactive filtering by country and year with user-guided prompts*
 
-**Standard Query:**
-![CLI Q1 Without Customization](images/cli_q1_without_customization.png)
-*Figure 2b: CLI Life Expectancy Query - Default Parameters*
+**Question 2: Health & Education Excellence (3-Country Ranking):**
+![CLI Q2 With 3 Rankings](images/cli_q2_with_customization-3-rank.png)
+*Figure 4a: CLI Health & Education Ranking - Top 3 countries with composite scoring algorithm*
 
-##### Question 2: Health & Education Excellence
+**Question 2: Health & Education Excellence (5-Country Ranking):**
+![CLI Q2 With 5 Rankings](images/cli_q2_with_customization-5-rank.png)
+*Figure 4b: CLI Health & Education Ranking - Extended top 5 countries analysis*
 
-**With Custom Indicators:**
-![CLI Q2 With Customization](images/cli_q2_with_customization.png)
-*Figure 3a: CLI Health & Education Ranking with Custom Indicator Selection*
-
-**Standard Analysis:**
-![CLI Q2 Without Customization](images/cli_q2_without_customization.png)
-*Figure 3b: CLI Health & Education Ranking - Default Multi-Criteria Analysis*
-
-##### Question 3: Forest Area Loss Analysis
-
-**With Custom Time Range:**
+**Question 3: Forest Area Loss Analysis with Custom Time Range:**
 ![CLI Q3 With Customization](images/cli_q3_with_customization.png)
-*Figure 4a: CLI Forest Area Loss Analysis with Custom Year Range*
-
-**Standard Period (2000-2020):**
-![CLI Q3 Without Customization](images/cli_q3_without_customization.png)
-*Figure 4b: CLI Forest Area Loss Analysis - Standard 20-Year Period*
-
+*Figure 5: CLI Forest Area Loss Analysis - Custom year range selection with temporal data comparison*
 
 ## Assignment Questions Addressed
 
@@ -398,6 +393,7 @@ for {
 - **Testing-Ready:** Structure supports unit testing and integration testing
 
 ## Benefits
+
 **Flexible, reusable methods.** Queries written once for GdpData records work for any data subset. For example, lifeExpectancyQuery can be applied to a sequence of records from any country or year without change. We wrote each query abstractly for the trait, so adding a new data source, like another CSV with the same schema requires no changes to the analysis logic.
 
 **Extensibility.** Because the trait defines a common interface, adding new indicators or record types is simpler. If we extend GdpData with new fields or create a new subclass with extra data, existing queries on the trait are able to work while ignoring the new fields, and we can write additional query methods for the new fields without rewriting core logic. Allowing new cases to fit in without breaking our older code.
@@ -405,6 +401,7 @@ for {
 **Clean and maintainable code.** The CLI and JavaFX GUI layers simply call these abstract query methods and display results, without needing to know the concrete record type. The Agent hides all details of how the data is processed. Because we use high-order functions and trait types, the query logic is concise and clear. For example, rather than nested loops and type checks, we utilized .filter and .groupBy, which makes the code concise. Increasing our code’s readability and modifiability.
 
 ## Limitations
+
 **Type inference and complexity.** Chaining many collection operations on abstract types sometimes made Scala’s type inference hard to manage. The return types involving Option, and collections (Option & Seq) can become complicated. In some cases, we had to add explicit type annotations or helper methods to avoid confusing the compiler. For example, handling Option[Double] for nullable fields (life_expectancy) required explicit .get calls or .flatten, which adds verbosity and potential null-safety issues. Debugging a type-mismatch in a long chain was occasionally tricky because error messages referred to high-level types, blurring which step was wrong.
 
 **Immutable vs. mutable collections.** Scala’s collections are by default immutable, which is great for safety but can sometimes be inconvenient. In this project we mostly used immutable Seq and Map, which means every transformation creates new collections. For large datasets, this can have detrimental performance costs. If we needed in-place updates or incremental building (reading a huge CSV record by record), using mutable buffers might have been more efficient, but mixing immutable and mutable code can complicate design. We found that operations like groupBy build large intermediate Maps, and there is no easy way to update them in place. Switching to mutable structures (ArrayBuffer) could improve performance but would reduce the elegance of the code.
@@ -415,9 +412,22 @@ Overall, subtype polymorphism via Scala traits and the collection API gave us in
 
 ## Authors
 
-- **Tan Kok Feng (Project Leader):** GUI Framework, Data Model Architecture
-  GitHub: [KevinTan2025](https://github.com/KevinTan2025)
-- **Wong Yu Xuan:** CLI Interface, Core Analytical Engine
-  GitHub: [Meghan924](https://github.com/Meghan924)
-- **Yeah JinWei:** Data Model Restructuring, GUI, Section 2
-  GitHub: [Yeoh-JinWei](https://github.com/Yeoh-JinWei)
+- **Tan Kok Feng (Project Leader):**
+    - Designed GUI framework
+    - Developed data model architecture
+    - Led API integration and interfacing
+    - Finalized project documentation & GitHub readme
+    - GitHub Profile: [KevinTan2025](https://github.com/KevinTan2025)
+
+- **Wong Yu Xuan:**
+    - Developed CLI interface
+    - Built core analytical engine
+    - Planned and defined API architecture
+    - GitHub Profile: [Meghan924](https://github.com/Meghan924)
+
+- **Yeah JinWei:**
+    - Restructured data model
+    - Developed GUI interface
+    - Wrote Section 2 of documentation
+    - GitHub Profile: [Yeoh-JinWei](https://github.com/Yeoh-JinWei)
+
