@@ -234,7 +234,7 @@ private def safeToOptionDouble(s: String): Option[Double] =
 ## Project Structure
 
 ```
-PRG2104-Final-Assignment/
+PRG2104-Group-Assignment/
 ├── .git/                           # Git version control directory
 ├── .gitignore                      # Git ignore file
 ├── build.sbt                       # SBT build configuration
