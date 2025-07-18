@@ -419,7 +419,7 @@ Overall, subtype polymorphism via Scala traits and the collection API gave us in
   - Built core analytical engine
   - Planned and defined API architecture
   - GitHub Profile: [Meghan924](https://github.com/Meghan924)
-- **Yeah JinWei:**
+- **Yeoh JinWei:**
 
   - Restructured data model
   - Developed GUI interface
